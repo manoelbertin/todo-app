@@ -1,0 +1,323 @@
+/* ============================================
+   VARIÁVEIS
+   ============================================ */
+:root {
+    --bg: #0f0f1a;
+    --bg-card: #1a1a2e;
+    --bg-input: #16213e;
+    --primary: #6C63FF;
+    --primary-hover: #5A52D5;
+    --success: #22c55e;
+    --danger: #ef4444;
+    --danger-hover: #dc2626;
+    --text: #e4e4e7;
+    --text-muted: #71717a;
+    --border: #27272a;
+    --radius: 12px;
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   RESET
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+}
+
+/* ============================================
+   CONTAINER PRINCIPAL
+   ============================================ */
+.app {
+    width: 100%;
+    max-width: 550px;
+}
+
+/* ============================================
+   CABEÇALHO
+   ============================================ */
+.app-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.app-header h1 {
+    font-size: 2rem;
+    margin-bottom: 4px;
+}
+
+.app-date {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   FORMULÁRIO
+   ============================================ */
+.todo-form {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.todo-form input {
+    flex: 1;
+    padding: 14px 18px;
+    background: var(--bg-input);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.todo-form input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.todo-form input::placeholder {
+    color: var(--text-muted);
+}
+
+.btn-add {
+    padding: 14px 24px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.btn-add:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   FILTROS
+   ============================================ */
+.filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    flex: 1;
+    padding: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-btn:hover {
+    border-color: var(--primary);
+    color: var(--text);
+}
+
+.filter-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+/* ============================================
+   LISTA DE TAREFAS
+   ============================================ */
+.todo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: all 0.3s;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.todo-item:hover {
+    border-color: var(--primary);
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+/* Checkbox customizado */
+.todo-checkbox {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    flex-shrink: 0;
+}
+
+.todo-checkbox:hover {
+    border-color: var(--primary);
+}
+
+.todo-item.completed .todo-checkbox {
+    background: var(--success);
+    border-color: var(--success);
+}
+
+.todo-item.completed .todo-checkbox::after {
+    content: '✓';
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.todo-text {
+    flex: 1;
+    font-size: 1rem;
+    word-break: break-word;
+}
+
+.todo-date {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+.btn-delete {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    opacity: 0;
+}
+
+.todo-item:hover .btn-delete {
+    opacity: 1;
+}
+
+.btn-delete:hover {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--danger);
+}
+
+/* ============================================
+   ESTADO VAZIO
+   ============================================ */
+.empty-state {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--text-muted);
+}
+
+.empty-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.empty-state p {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.empty-state small {
+    font-size: 0.85rem;
+}
+
+/* ============================================
+   RODAPÉ
+   ============================================ */
+.app-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 16px;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.btn-clear {
+    background: none;
+    border: none;
+    color: var(--danger);
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.btn-clear:hover {
+    background: rgba(239, 68, 68, 0.15);
+}
+
+/* ============================================
+   RESPONSIVO
+   ============================================ */
+@media (max-width: 480px) {
+    .todo-form {
+        flex-direction: column;
+    }
+
+    .btn-add {
+        width: 100%;
+    }
+
+    .todo-date {
+        display: none;
+    }
+
+    .btn-delete {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- CABEÇALHO -->
+        <header class="app-header">
+            <h1>📝 Minhas Tarefas</h1>
+            <p class="app-date" id="currentDate"></p>
+        </header>
+
+        <!-- FORMULÁRIO -->
+        <form class="todo-form" id="todoForm">
+            <input 
+                type="text" 
+                id="todoInput" 
+                placeholder="O que você precisa fazer?" 
+                autocomplete="off"
+                maxlength="200"
+            >
+            <button type="submit" class="btn-add" id="btnAdd">
+                + Adicionar
+            </button>
+        </form>
+
+        <!-- FILTROS -->
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">
+                Todas
+            </button>
+            <button class="filter-btn" data-filter="active">
+                Pendentes
+            </button>
+            <button class="filter-btn" data-filter="completed">
+                Concluídas
+            </button>
+        </div>
+
+        <!-- LISTA DE TAREFAS -->
+        <ul class="todo-list" id="todoList">
+            <!-- Tarefas serão inseridas aqui pelo JavaScript -->
+        </ul>
+
+        <!-- ESTADO VAZIO -->
+        <div class="empty-state" id="emptyState">
+            <span class="empty-icon">🎉</span>
+            <p>Nenhuma tarefa por aqui!</p>
+            <small>Adicione sua primeira tarefa acima.</small>
+        </div>
+
+        <!-- RODAPÉ COM ESTATÍSTICAS -->
+        <footer class="app-footer" id="appFooter">
+            <span id="taskCount">0 tarefas</span>
+            <button class="btn-clear" id="btnClear">
+                Limpar concluídas
+            </button>
+        </footer>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
